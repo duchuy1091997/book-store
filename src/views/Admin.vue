@@ -23,7 +23,7 @@
                 Jhon
                 <strong>Smith</strong>
               </span>
-              <span class="user-role">mail</span>
+              <span class="user-role">{{email}}</span>
               <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -106,6 +106,12 @@ export default {
   components: {
     Hero
   },
+  data() {
+    return {
+      name: null,
+      email: null
+    };
+  },
   methods: {
     closeMenu() {
       $(".page-wrapper").toggleClass("toggled");
@@ -120,6 +126,10 @@ export default {
           console.log(err);
         });
     }
+  },
+  created() {
+    let user = fb.auth().currentUser;
+    this.email = user.email;
   }
 };
 </script>

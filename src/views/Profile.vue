@@ -99,6 +99,7 @@
                   <div class="form-group">
                     <input
                       type="submit"
+                      @click="updateProfile"
                       value="Save Changes"
                       class="btn btn-primary w-100"
                     >
@@ -182,6 +183,7 @@
                     <input
                       type="button"
                       value="Reset password email"
+                      @click="resetPassword"
                       class="btn btn-success w-100"
                     >
                   </div>
@@ -229,8 +231,29 @@ export default {
     };
   },
 
-  firestore() {},
-  methods: {}
+  firestore() {
+    const user = fb.auth().currentUser;
+    return {
+      profile: db.collection("profiles").doc(user.uid)
+    };
+  },
+  methods: {
+    updateProfile() {
+      this.$firestore.profile.update(this.profile);
+    },
+    resetPassword() {
+      const auth = fb.auth();
+
+      auth
+        .sendPasswordResetEmail(auth.currentUser.email)
+        .then(() => {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 
