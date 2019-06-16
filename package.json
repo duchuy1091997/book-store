@@ -14,9 +14,11 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "register-service-worker": "^1.6.2",
+    "sweetalert2": "^8.12.1",
     "vue": "^2.6.10",
     "vue-firestore": "^0.3.21",
-    "vue-router": "^3.0.3"
+    "vue-router": "^3.0.3",
+    "vue2-editor": "^2.8.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
