@@ -12,15 +12,18 @@ export default {
   props: {
     name: String,
     price: String,
-    productId: String
+    image:String,
+    pId: String
   },
 
   data(){
       return {
           item :{
             productName: this.name,
+            productImage: this.image,
             productPrice: this.price,
-            product_id: this.id,
+            productId: this.pId,
+            productQuantity: 1,
           }
 
       }
